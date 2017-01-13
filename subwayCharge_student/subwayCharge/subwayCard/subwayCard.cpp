@@ -123,6 +123,8 @@ EN_RETURN_CODE AssignCard(unsigned int &cardNo, EN_CARD_TYPE enCard, unsigned in
 	//tmp->next=NULL;
 	//ListAddTail(g_usredCardList,tmp);
 	//cardNo=tmp->cardNo;
+	if(charge>MAX_BALANCE) 
+		return EN_RETURN_RECHARGE_OVERFLOW;
 	int i=0;
 	for(;i<MAX_CARD_NUM;i++){
 		if(g_cardList[i].usrFlag==false){
@@ -133,7 +135,6 @@ EN_RETURN_CODE AssignCard(unsigned int &cardNo, EN_CARD_TYPE enCard, unsigned in
 			 break;
 		}
 	}
-	cout<<i<<endl;
 	if(i==MAX_CARD_NUM) 
 		return EN_RETURN_CARD_OVERLOW;
     return EN_RETURN_SUCC;
@@ -160,7 +161,12 @@ EN_RETURN_CODE RechargeCard(unsigned int cardNo, unsigned int recharge)
 */
 EN_RETURN_CODE GetCardInfo(unsigned int cardNo, unsigned int &balance, EN_CARD_TYPE &enCard)
 {
-    
+    if(cardNo>99)
+		return EN_RETURN_INVALID_CARD;
+	if(!g_cardList[cardNo].usrFlag)
+		return EN_RETURN_INVALID_CARD;
+	balance=g_cardList[cardNo].balance;
+	enCard=g_cardList[cardNo].enCard;
     return EN_RETURN_SUCC;
 }
 
@@ -232,6 +238,7 @@ EN_RETURN_CODE GetCardType(char cardType[], EN_CARD_TYPE &enCard)
 			enCard=EN_CARD_TYPE_NOMAL;
 			break;
 		default:
+			return EN_RETURN_INPUT_INVALID_CARDTYPE;
 			break;
 	}
 

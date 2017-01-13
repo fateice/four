@@ -22,15 +22,14 @@ void ProcCreateSingleTicketCmd(UN_CMD &unCmd, char returnStr[MAX_SEND_BUFFER_LEN
 	unsigned int distance=0;
 	int ticketPrice=0;
 	EN_RETURN_CODE returnCode=EN_RETURN_SUCC;
+	unsigned int cardNo=0;
+	returnCode=GetSubwayStationDis(unCmd.stCmdSingleTicket.srcStation,unCmd.stCmdSingleTicket.dstStation,distance);
+	if(returnCode==EN_RETURN_SUCC)
+	{
+		//returnCode=EN_RETURN_INVALID_DIS;
+	   //获取两个站点间的里程数 GetSubwayStationDis
 
-	unsigned int cardNo;
-	
-	//returnCode=GetSubwayStationDis(unCmd.stCmdSingleTicket.srcStation,unCmd.stCmdSingleTicket.dstStation,distance);
-	if(GetSubwayStationDis(unCmd.stCmdSingleTicket.srcStation,unCmd.stCmdSingleTicket.dstStation,distance)==EN_RETURN_INNER_ERR)
-		returnCode=EN_RETURN_INVALID_DIS;
-    //获取两个站点间的里程数 GetSubwayStationDis
-
-     //获取两个站点间的基本票价  GetBasePrice
+      //获取两个站点间的基本票价  GetBasePrice
 	ticketPrice=GetBasePrice(distance);
 	if(ticketPrice==-1)
 		returnCode=EN_RETURN_INNER_ERR;
@@ -39,6 +38,7 @@ void ProcCreateSingleTicketCmd(UN_CMD &unCmd, char returnStr[MAX_SEND_BUFFER_LEN
     //办单程卡 AssignCard
 	returnCode=AssignCard(cardNo,EN_CARD_TYPE_SINGLE,ticketPrice);
     //输出字符串
+	}
     GetOutputResultStr(EN_CMD_TYPE_SINGLE_TICKET, returnCode, cardNo, EN_CARD_TYPE_SINGLE,ticketPrice, returnStr);
 
 

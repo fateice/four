@@ -1,12 +1,16 @@
-﻿生成启动时间为 2017/1/13 9:11:32。
-     1>项目“C:\Users\acer\Desktop\subwayCharge_student\subwayCharge\subwayCharge.vcxproj”在节点 2 上(build 个目标)。
+﻿生成启动时间为 2017/1/13 10:00:36。
+     1>项目“C:\Users\acer\Desktop\subwayCharge_student113\subwayCharge\subwayCharge.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
-         正在对“LLT\subwayCharge.unsuccessfulbuild”执行 Touch 任务。
+         正在创建“LLT\subwayCharge.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         E:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IsubwayTestcase /I..\..\UT_tools\mockcpp\include /I..\..\UT_tools\googletest1.8.0\include /I..\subwayCharge /IsubwayCard /IsubwayCommand /IsubwayCommon /IsubwayControl /IsubwayGlobal /IsubwayLine /IsubwayPrice /IsubwaySocket /IsubwayError /ZI /nologo /W1 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _SUBWAY_LLT /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"LLT\\" /Fd"LLT\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt subwayCharge.cpp
-         subwayCharge.cpp
+         E:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IsubwayTestcase /I..\..\UT_tools\mockcpp\include /I..\..\UT_tools\googletest1.8.0\include /I..\subwayCharge /IsubwayCard /IsubwayCommand /IsubwayCommon /IsubwayControl /IsubwayGlobal /IsubwayLine /IsubwayPrice /IsubwaySocket /IsubwayError /ZI /nologo /W1 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _SUBWAY_LLT /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"LLT\\" /Fd"LLT\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt subwayCard\subwayCard.cpp subwayTestcase\subwaycard_test\subwaycard_test.cpp
+         subwayCard.cpp
+         subwaycard_test.cpp
+         Unknown compiler version - please run the configure tests and report the results
+         using native typeof
+         正在生成代码...
        Link:
-         E:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.exe" /NOLOGO /LIBPATH:..\..\UT_tools\googletest1.8.0\lib /LIBPATH:..\..\UT_tools\mockcpp\lib gtestd.lib mockcpp.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"LLT\subwayCharge.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.lib" /MACHINE:X86 LLT\stdafx.obj
+         E:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.exe" /NOLOGO /LIBPATH:..\..\UT_tools\googletest1.8.0\lib /LIBPATH:..\..\UT_tools\mockcpp\lib gtestd.lib mockcpp.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"LLT\subwayCharge.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.lib" /MACHINE:X86 LLT\stdafx.obj
          LLT\subwayCard.obj
          LLT\subwayCharge.obj
          LLT\cmdCreateCard.obj
@@ -36,17 +40,17 @@
          LLT\subwaycard_test.obj
          LLT\subwayline_test.obj
          LLT\subwayprice_test.obj
-         LINK : 没有找到 C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.exe 或上一个增量链接没有生成它；正在执行完全链接
-            正在创建库 C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.lib 和对象 C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.exp
-     1>gtestd.lib(gtest-all.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“gtestd.lib(gtest-all.obj)”或在“C:\Users\acer\Desktop\subwayCharge_student\LLT\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-         subwayCharge.vcxproj -> C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.exe
+         LINK : 没有找到 C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.exe 或上一个增量链接没有生成它；正在执行完全链接
+            正在创建库 C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.lib 和对象 C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.exp
+     1>gtestd.lib(gtest-all.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“gtestd.lib(gtest-all.obj)”或在“C:\Users\acer\Desktop\subwayCharge_student113\LLT\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+         subwayCharge.vcxproj -> C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.exe
        Manifest:
-         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\acer\Desktop\subwayCharge_student\LLT\subwayCharge.exe;#1" /manifest LLT\subwayCharge.exe.intermediate.manifest
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\acer\Desktop\subwayCharge_student113\LLT\subwayCharge.exe;#1" /manifest LLT\subwayCharge.exe.intermediate.manifest
        FinalizeBuildStatus:
          正在删除文件“LLT\subwayCharge.unsuccessfulbuild”。
          正在对“LLT\subwayCharge.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Users\acer\Desktop\subwayCharge_student\subwayCharge\subwayCharge.vcxproj”(build 个目标)的操作。
+     1>已完成生成项目“C:\Users\acer\Desktop\subwayCharge_student113\subwayCharge\subwayCharge.vcxproj”(build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:04.21
+已用时间 00:00:05.67

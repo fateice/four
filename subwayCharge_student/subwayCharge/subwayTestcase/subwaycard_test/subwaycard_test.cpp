@@ -89,4 +89,47 @@ TEST_F(subwayCardTest, Test2)
     
 }
 
+//购买单程票,预存金额超过上限
+TEST_F(subwayCardTest, AssignCardRECHARGE_OVERFLOW)
+{
+  	//1 变量定义,初始化
+	EN_RETURN_CODE returnCode=EN_RETURN_SUCC;
+	unsigned int cardNo;
+    //2  用户写自己的测试流程，调用被测函数
+	InitCardManagerInfo();
+	returnCode=AssignCard(cardNo,EN_CARD_TYPE_SINGLE,10000);
+    EXPECT_TRUE(returnCode == EN_RETURN_RECHARGE_OVERFLOW);
+}
+
+//购买单程票，购买成功
+TEST_F(subwayCardTest, AssignCardSucc)
+{
+  	//1 变量定义,初始化
+	EN_RETURN_CODE returnCode=EN_RETURN_CARD_OVERLOW;
+	unsigned int cardNo;
+    int i=0;
+    //2  用户写自己的测试流程，调用被测函数
+	InitCardManagerInfo();
+    for(;i<MAX_CARD_NUM;++i) {
+		returnCode=AssignCard(cardNo,EN_CARD_TYPE_SINGLE,i);
+	}
+    EXPECT_TRUE(returnCode == EN_RETURN_SUCC);
+}
+
+//购买单程票，地铁票已达系统上限
+TEST_F(subwayCardTest, AssignCardOverFlow)
+{
+  	//1 变量定义,初始化
+	EN_RETURN_CODE returnCode=EN_RETURN_SUCC;
+	unsigned int cardNo;
+    int i=0;
+    //2  用户写自己的测试流程，调用被测函数
+	InitCardManagerInfo();
+    for(;i<MAX_CARD_NUM;++i) {
+		AssignCard(cardNo,EN_CARD_TYPE_SINGLE,i);
+	}
+	returnCode=AssignCard(cardNo,EN_CARD_TYPE_SINGLE,i);
+    EXPECT_TRUE(returnCode == EN_RETURN_CARD_OVERLOW);
+}
+
 #endif
