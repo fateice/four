@@ -7,24 +7,103 @@
 using namespace std;
 
 ST_SUBWAY_CARD g_cardList[MAX_CARD_NUM];
-//TListHead* g_idleCardList;    //双向链表：空闲的卡
-//TListHead* g_usredCardList;   //双向链表：使用中的卡
+
+TListHead g_idleCardList;				//双向链表：空闲的卡
+TListHead g_usredCardList;				//双向链表：使用中的卡
+bool firstRun = true;					//程序是第一次运行
+
+/*
+@ 初始化g_cardList
+@ 返回值: 无
+*/
+void initCardList()
+{
+	for(int i=0;i<MAX_CARD_NUM;i++){
+		g_cardList[i].enCard = EN_CARD_TYPE_SINGLE;
+		g_cardList[i].cardNo = i;
+		g_cardList[i].usrFlag = false;
+		g_cardList[i].balance = 0;
+	}
+}
+
+/*
+@ 初始化空闲的卡链表
+@ 入参：g_idleCardList的地址
+@ 返回值: 无
+*/
+void initIdleCardList(TListHead *p_idleCardList)
+{
+	TListHead *tmp;
+	InitListHead(p_idleCardList);
+
+	for(int i=0;i<MAX_CARD_NUM;i++)
+	{
+		tmp = (TListHead *)malloc(sizeof(TListHead));
+		if(NULL == tmp)
+		{
+			return;
+		}
+		tmp->cardNo = i;
+		ListAdd(tmp,p_idleCardList,p_idleCardList->next);
+	}
+	p_idleCardList->cardNo = 100;//头结点的数据域代表这个链表有几个元素
+}
+
+/*
+@ 初始化使用中的卡链表
+@ 入参：g_usredCardList的地址
+@ 返回值: 无
+*/
+void initUsredCardList(TListHead *p_usredCardList)
+{
+	InitListHead(p_usredCardList);
+	p_usredCardList->cardNo = 0;//头结点的数据域代表这个链表有几个元素
+}
+
+/*
+@ 将两个链表都清空
+@ 返回值: 无
+*/
+void freeLists()
+{
+	ListClear(&g_idleCardList);
+	g_idleCardList.cardNo = 0;
+	ListClear(&g_usredCardList);
+	g_usredCardList.cardNo = 0;
+}
+
+/*
+@ 将两个链表都打印出来，用于调试
+@ 返回值: 无
+*/
+void printLists()
+{
+	puts("g_idleCardList有如下元素（第一个是表长）:");
+	ListPrint(&g_idleCardList);
+	puts("g_usredCardList有如下元素（第一个是表长）:");
+	ListPrint(&g_usredCardList);
+}
 /*
 @ 初始化所有卡信息
 @ 返回值: 无
 */
 void InitCardManagerInfo()
 {
-	for(int i=0;i<MAX_CARD_NUM;i++){
-	    g_cardList[i].cardNo=i;
-		g_cardList[i].usrFlag=false;
+	initCardList();
+
+	if(!firstRun)
+	{
+		freeLists();
 	}
+	firstRun = false;
+
+	initIdleCardList(&g_idleCardList);
+	initUsredCardList(&g_usredCardList);
 	/*for(int i=0;i<MAX_CARD_NUM;i++){
 	    TListHead* tmp=new TListHead();
 		tmp->cardNo=i;
 		ListAddHead(tmp,g_idleCardList);
 	}*/
-	
 }
 
 /*
@@ -51,10 +130,12 @@ EN_RETURN_CODE AssignCard(unsigned int &cardNo, EN_CARD_TYPE enCard, unsigned in
 			 g_cardList[i].usrFlag=true;
 			 g_cardList[i].enCard=enCard;
 			 g_cardList[i].balance=charge;
+			 break;
 		}
 	}
-
-	if(i==MAX_CARD_NUM) return EN_RETURN_CARD_OVERLOW;
+	cout<<i<<endl;
+	if(i==MAX_CARD_NUM) 
+		return EN_RETURN_CARD_OVERLOW;
     return EN_RETURN_SUCC;
 }
 

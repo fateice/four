@@ -11,7 +11,7 @@ using namespace std;
 */
 int GetBasePrice(unsigned int meters)
 {
-    if(meters>0&&meters<=3)
+    if(meters>=0&&meters<=3)
 		return 2;
 	else if(meters>3&&meters<=5)
 		return 3;

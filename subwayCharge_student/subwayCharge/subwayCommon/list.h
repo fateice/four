@@ -24,7 +24,7 @@
 typedef struct ListHead {
     struct ListHead *next;
     struct ListHead *prev;
-	unsigned int cardNo;
+	int cardNo;
 }TListHead;
 
 
@@ -285,6 +285,54 @@ static inline void ListSpliceTail(TListHead *list,
 	if (!ListEmpty(list))
 		__ListSplice(list, head->prev, head);
 }
+/*****************************************************************************
+ 函 数 名  : ListPrint
+ 功能描述  : 将一个链表打印出来
+ 输入参数  : TListHead *list
+ 输出参数  : 无
+ 返 回 值  : 无
+ 调用函数  : 无
+ 被调函数  : 无
 
+ 修改历史      :
+  1.日    期   : 2017.01.12
+    作    者   : 平善明
+    修改内容   : 新生成函数
+    说明:简单打印,用于调试
+*****************************************************************************/
+static inline void ListPrint(TListHead *list)
+{
+	TListHead *p = list;
+	do
+	{
+		printf("%d\t",p->cardNo);
+		p = p->next;
+	}while(p != list);
+	puts("\n");
+}
 
+/*****************************************************************************
+ 函 数 名  : ListClear
+ 功能描述  : 将一个链表元素清空，保留头结点
+ 输入参数  : TListHead *list
+ 输出参数  : 无
+ 返 回 值  : 无
+ 调用函数  : 无
+ 被调函数  : 无
+
+ 修改历史      :
+  1.日    期   : 2017.01.12
+    作    者   : 平善明
+    修改内容   : 新生成函数
+    说明:清空内容，释放空间。
+*****************************************************************************/
+static inline void ListClear(TListHead *list)
+{
+	TListHead *tmp;
+	while((tmp = list->next) != list)
+	{
+		_ListDel(list, list->next->next);
+		free(tmp);
+	}
+}
 #endif

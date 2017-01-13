@@ -21,7 +21,7 @@ void ProcCreateSingleTicketCmd(UN_CMD &unCmd, char returnStr[MAX_SEND_BUFFER_LEN
 {
 	unsigned int distance=0;
 	int ticketPrice=0;
-	EN_RETURN_CODE returnCode;
+	EN_RETURN_CODE returnCode=EN_RETURN_SUCC;
 
 	unsigned int cardNo;
 	
@@ -37,9 +37,9 @@ void ProcCreateSingleTicketCmd(UN_CMD &unCmd, char returnStr[MAX_SEND_BUFFER_LEN
 	// getnewcard return code -1 创建新卡失败
 
     //办单程卡 AssignCard
-	AssignCard(cardNo,EN_CARD_TYPE_SINGLE,ticketPrice);
+	returnCode=AssignCard(cardNo,EN_CARD_TYPE_SINGLE,ticketPrice);
     //输出字符串
-    GetOutputResultStr(EN_CMD_TYPE_SINGLE_TICKET, EN_RETURN_SUCC, cardNo, EN_CARD_TYPE_SINGLE,ticketPrice, returnStr);
+    GetOutputResultStr(EN_CMD_TYPE_SINGLE_TICKET, returnCode, cardNo, EN_CARD_TYPE_SINGLE,ticketPrice, returnStr);
 
 
     return;
