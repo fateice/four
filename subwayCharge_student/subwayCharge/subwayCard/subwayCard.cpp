@@ -19,7 +19,7 @@ bool firstRun = true;					//程序是第一次运行
 void initCardList()
 {
 	for(int i=0;i<MAX_CARD_NUM;i++){
-		g_cardList[i].enCard = EN_CARD_TYPE_SINGLE;
+		g_cardList[i].enCard = EN_CARD_TYPE_BUTT;
 		g_cardList[i].cardNo = i;
 		g_cardList[i].usrFlag = false;
 		g_cardList[i].balance = 0;
@@ -178,7 +178,6 @@ EN_RETURN_CODE GetCardInfo(unsigned int cardNo, unsigned int &balance, EN_CARD_T
 */
 EN_RETURN_CODE DeductCard(unsigned int cardNo, EN_CARD_TYPE enCard, unsigned int deductPrice, unsigned int &balance)
 {
-    
     return EN_RETURN_SUCC;
 }
 
@@ -190,7 +189,14 @@ EN_RETURN_CODE DeductCard(unsigned int cardNo, EN_CARD_TYPE enCard, unsigned int
 */
 int DeleteCard(unsigned int cardNo)
 {
-    
+	if(g_cardList[cardNo].usrFlag==false){
+	    return -1;
+	}
+	else{
+		g_cardList[cardNo].usrFlag=false;
+		g_cardList[cardNo].balance=0;
+		g_cardList[cardNo].enCard=EN_CARD_TYPE_BUTT;
+	}    
     return 0;
 }
 
@@ -227,14 +233,17 @@ char* GetCardTypeStr(EN_CARD_TYPE enCard)
 */
 EN_RETURN_CODE GetCardType(char cardType[], EN_CARD_TYPE &enCard)
 {
+	if(cardType[0]>='a'&&cardType[0]<='z'){
+	    cardType[0]-=('a'-'A');
+	}
 	switch (cardType[0]){
-	    case 'A':
+	    case ('A'):
 			enCard=EN_CARD_TYPE_SINGLE;
 			break;
-		case 'B':
+		case ('B'):
 			enCard=EN_CARD_TYPE_ELDER;
 			break;
-		case 'C':
+		case ('C'):
 			enCard=EN_CARD_TYPE_NOMAL;
 			break;
 		default:
